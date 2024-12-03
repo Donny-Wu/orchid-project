@@ -28,6 +28,9 @@ use Tabuna\Breadcrumbs\Trail;
 | contains the need "dashboard" middleware group. Now create something great!
 |
 */
+use App\Orchid\Screens\TaskScreen;
+
+Route::screen('task', TaskScreen::class)->name('platform.task');
 
 // Main
 Route::screen('/main', PlatformScreen::class)
