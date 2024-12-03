@@ -28,7 +28,7 @@ class PlatformProvider extends OrchidServiceProvider
     public function registerMainMenu(): array
     {
         return [
-            Menu::make('Example screen')
+            Menu::make('Example screen02')
                 ->icon('monitor')
                 ->route('platform.example')
                 ->title('Navigation')
@@ -113,6 +113,20 @@ class PlatformProvider extends OrchidServiceProvider
             ItemPermission::group(__('System'))
                 ->addPermission('platform.systems.roles', __('Roles'))
                 ->addPermission('platform.systems.users', __('Users')),
+        ];
+    }
+    /**
+     * @return Menu[]
+     */
+    public function menu(): array
+    {
+        return [
+            // Other items...
+
+            Menu::make('Tasks')
+                ->icon('bag')
+                ->route('platform.task')
+                ->title('Tools')
         ];
     }
 }
