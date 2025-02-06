@@ -17,6 +17,7 @@ use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
+use App\Orchid\Screens\StateScreen;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,7 @@ use Tabuna\Breadcrumbs\Trail;
 use App\Orchid\Screens\TaskScreen;
 
 Route::screen('task', TaskScreen::class)->name('platform.task');
+Route::screen('state',StateScreen::class)->name('state');
 
 // Main
 Route::screen('/main', PlatformScreen::class)
