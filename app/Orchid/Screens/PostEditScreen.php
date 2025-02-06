@@ -24,9 +24,12 @@ class PostEditScreen extends Screen
      *
      * @return array
      */
-    public function query(Post $post): iterable
+    public function query(Post $post,Request $request): iterable
     {
-        // dd($post);
+        // dd($request->route('post'));
+        if($request->route('post') instanceof Post){
+            $post = $request->route('post');
+        }
         $this->post = $post;
         return [
             'post'=>$post
@@ -110,8 +113,12 @@ class PostEditScreen extends Screen
         Alert::info('You have successfully created a post');
         return redirect()->route('platform.post.list');
     }
-    public function remove(){
-        $this->post->delete();
+    public function remove(Post $post,Request $request){
+        $post = $request->route('post');
+        if($post==null){
+            return redirect()->route('platform.post.list');
+        }
+        $post->delete();
         Alert::info('You have successfully deleted the post');
         return redirect()->route('platform.post.list');
     }
