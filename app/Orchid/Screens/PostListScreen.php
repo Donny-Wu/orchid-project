@@ -2,6 +2,9 @@
 
 namespace App\Orchid\Screens;
 
+use App\Orchid\Layouts\PostListLayout;
+use App\Models\Post;
+use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 
 class PostListScreen extends Screen
@@ -13,7 +16,9 @@ class PostListScreen extends Screen
      */
     public function query(): iterable
     {
-        return [];
+        return [
+            'posts' => Post::paginate()
+        ];
     }
 
     /**
@@ -23,7 +28,11 @@ class PostListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'PostListScreen';
+        return 'Blog post';
+    }
+    public function description(): ?string
+    {
+        return "All blog posts";
     }
 
     /**
@@ -33,7 +42,9 @@ class PostListScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [];
+        return [
+            Link::make('Create new')->icon('pencil')->route('platform.post.edit')
+        ];
     }
 
     /**
@@ -43,6 +54,8 @@ class PostListScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [];
+        return [
+            PostListLayout::class
+        ];
     }
 }
